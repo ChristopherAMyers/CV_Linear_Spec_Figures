@@ -28,7 +28,7 @@ labels = [
     'AIMD/QM+MM',
 ]
 
-fig, ax_grid = plt.subplots(2, 1, figsize=(8.0,8.5))
+fig, ax_grid = plt.subplots(2, 1, figsize=(7.0,8.0))
 colors = ['#C99300', '#259225', 'red', 'Blue', '#C99300', '#259225', 'red', 'Blue']
 
 exp_data = np.loadtxt('experimental_abs.txt').T
@@ -54,7 +54,7 @@ for file, label, color in zip(plot_files, labels, colors):
     i += 1
 
     if plot_num == 0:
-        ax.legend(loc='upper right')
+        ax.legend(loc='upper right', fontsize=plt.rcParams['axes.labelsize']*0.9)
     if plot_num == 1:
         ax.set_xlabel('Energy (eV)')
     ax.set_ylabel('Intensity (arb. units)')

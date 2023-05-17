@@ -1,0 +1,7 @@
+taken from:
+	
+/Users/cmyers/Library/CloudStorage/Box-Box/Isborn_Group/AIMD/solvent_analysis/count_solvent/plot_hbonds.py
+
+The data used here still contains the part of the trajectory used
+for equilibration (the first 20ps). This is cropped out in the 
+plotting scripts
