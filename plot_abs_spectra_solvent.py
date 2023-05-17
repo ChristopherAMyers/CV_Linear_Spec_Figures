@@ -38,7 +38,7 @@ def plot_on_axes(ax):
 
         ax.plot(data[0], data[1], label=label, color=color)
 
-    ax.legend(loc='upper right')
+    ax.legend(loc='upper right', fontsize=plt.rcParams['axes.labelsize']*0.9)
     ax.set_xlabel('Energy (eV)')
     ax.set_ylabel('Intensity (arb. units)')
     ax.set_ylim(-0.005, 1.05)

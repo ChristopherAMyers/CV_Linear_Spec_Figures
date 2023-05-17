@@ -19,9 +19,9 @@ plt.rcParams.update(rcParams)
 fig, (ax1, ax2) = plt.subplots(2, figsize=(7, 8))
 
 # left, bottom, width, height
-plot_spectral_density_solvent.plot_on_axes(fig, ax1, [0.44, 0.82, 0.3, 0.14])
+plot_spectral_density_solvent.plot_on_axes(fig, ax1, [0.5, 0.8, 0.3, 0.14])
 plot_abs_spectra_solvent.plot_on_axes(ax2)
 
 fig.tight_layout()
-fig.savefig('png/all_models.png', dpi=500)
+fig.savefig('png/all_solvent.png', dpi=500)
 plt.show()
