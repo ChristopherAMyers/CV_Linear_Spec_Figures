@@ -10,11 +10,13 @@ These scripts were gnerated with
 
 ### Instructions
 To generate the figures for the paper, run the following scripts:
-* plot_2DES_models.py
-* plot_2DES_solvent_1.py
-* plot_2DES_solvent_2.py
-* plot_SS_vs_time.py
-* plot_transient_abs.py
+* plot_raman_models.py
+* plot_all_models.py
+* plot_all_solvent.py
+* plot_abs_spectra_models_low_high_freq.py
+* plot_all_time_resolved.py
+* PES/plot_both.py
+* hbonds/plot_hbonds.py
 
 The resulting figures will be stored in the `png` directory
 

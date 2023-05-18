@@ -62,7 +62,7 @@ def plot_on_axes(ax):
     ax.set_yticks(np.arange(0, 0.17, 0.04))
     ax.set_ylabel('Energy (eV)')
     ax.set_xlabel('Time (ps)')
-    ax.legend(fontsize=fontsize)
+    ax.legend(fontsize=fontsize, ncol=2)
 
 if __name__ == "__main__":
     figsize = np.array((9, 5))

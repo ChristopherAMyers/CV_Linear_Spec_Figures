@@ -17,7 +17,7 @@ rcParams = {
 }
 plt.rcParams.update(rcParams)
 
-fig = plt.figure(figsize=np.array((11, 14))*0.8, layout='constrained')
+fig = plt.figure(figsize=np.array((11, 14))*0.7, layout='constrained')
 subfigs = fig.subfigures(nrows=2, ncols=1, height_ratios=[1,2])
 
 
