@@ -32,7 +32,7 @@ ax.set_ylabel('N-O Distance (Ang.)')
 ax.set_xlabel('Simulation Time (ps)')
 ax.set_xlim(0, 60)
 fig.tight_layout()
-
+fig.savefig('../png/hbonds.png', dpi=300)
 
 plt.show()
 

@@ -43,5 +43,5 @@ newax2.axis('off')
 
 
 fig.tight_layout()
-fig.savefig('both.png', dpi=500)
+fig.savefig('../png/pes_both.png', dpi=300)
 plt.show()
