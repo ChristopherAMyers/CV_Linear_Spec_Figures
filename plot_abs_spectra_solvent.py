@@ -1,25 +1,27 @@
 import numpy as np
 import os
 import matplotlib.pyplot as plt
-import global_settings
+import global_settings as GS
 
 def plot_on_axes(ax):
 
     plot_files = [
-        '../gs-aimd/qm2/vee_MD_cumulant_spectrum.dat',
-        '../gs-aimd/mm_qm1/vee_MD_cumulant_spectrum.dat',
-        '../gs-aimd/mm_C4/vee_MD_cumulant_spectrum.dat',
-        '../gs-aimd/mm_4hb/vee_MD_cumulant_spectrum.dat',
-        '../gs-aimd/stripped/vee_MD_cumulant_spectrum.dat'
+        GS.data_root_dir + '/gs-aimd/qm2/vee_MD_cumulant_spectrum.dat',
+        GS.data_root_dir + '/gs-aimd/mm_qm1/vee_MD_cumulant_spectrum.dat',
+        GS.data_root_dir + '/gs-aimd/mm_C4/vee_MD_cumulant_spectrum.dat',
+        GS.data_root_dir + '/gs-aimd/mm_star/vee_MD_cumulant_spectrum.dat',
+        GS.data_root_dir + '/gs-aimd/mm_4hb/vee_MD_cumulant_spectrum.dat',
+        GS.data_root_dir + '/gs-aimd/stripped/vee_MD_cumulant_spectrum.dat',
     ]
     labels = [
         'QM+MM',
         'Full MM',
         'Pi Solvent',
+        'Star Methanol',
         'HB Aceptors',
         'Stripped'
     ]
-    colors = ['blue', 'red', '#D321FF', '#21ADEF', 'black']
+    colors = ['blue', 'red', '#D321FF', 'orange', '#21ADEF', 'black']
 
     exp_data = np.loadtxt('experimental_abs.txt').T
     ax.fill_between(exp_data[0], 0, exp_data[1], color='#BFC1C1', linestyle=(0, (1, 1)), label='Experiment')

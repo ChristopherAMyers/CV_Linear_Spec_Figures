@@ -1,15 +1,15 @@
 import numpy as np
 import os
 import matplotlib.pyplot as plt
-import global_settings
+import global_settings as GS
 
 def plot_on_axes(ax):
 
     plot_files = [
-        global_settings.data_root_dir + 'gs-ffmd/mm_qm1/vee_MD_cumulant_spectrum.dat',
-        global_settings.data_root_dir + 'gs-ffmd-MZ/mm_qm1/vee_MD_cumulant_spectrum.dat',
-        global_settings.data_root_dir + 'gs-aimd/mm_qm1/vee_MD_cumulant_spectrum.dat',
-        global_settings.data_root_dir + 'gs-aimd/qm2/vee_MD_cumulant_spectrum.dat',
+        os.path.join(GS.data_root_dir, 'gs-ffmd/mm_qm1/vee_MD_cumulant_spectrum.dat'),
+        os.path.join(GS.data_root_dir, 'gs-ffmd-MZ/mm_qm1/vee_MD_cumulant_spectrum.dat'),
+        os.path.join(GS.data_root_dir, 'gs-aimd/mm_qm1/vee_MD_cumulant_spectrum.dat'),
+        os.path.join(GS.data_root_dir, 'gs-aimd/qm2/vee_MD_cumulant_spectrum.dat'),
     ]
     labels = [
         'QUBEKit/MM',
