@@ -19,8 +19,9 @@ fig, ax_grid = plt.subplots(1, len(plot_info), figsize=(14.0,4.5), sharey=True)
 for ax, (file, label, color) in zip(ax_grid, plot_info):
     # if 'HB' not in label:
     #     continue
-    print(file)
+    # print(file)
     data = np.loadtxt(file).T
+    # data = data[:, 10000:]
     mean = np.mean(data[0])
     std = np.std(data[0])
     bins = np.linspace(mean - 0.3, mean + 0.3, 41)
@@ -44,6 +45,7 @@ for ax, (file, label, color) in zip(ax_grid, plot_info):
     ax.text(0.60, 0.9, '$\\tilde{{\mu}}_3 = ${:5.2f}'.format(sk), transform = ax.transAxes, size=14)
     ax.text(0.60, 0.8, '$\\tilde{{\mu}}_4 = ${:5.2f}'.format(kurt), transform = ax.transAxes, size=14)
 
+    print('{:16s}  {:8.4f} {:8.4f} {:8.4f} {:8.4f}'.format(label, mean, std, sk, kurt))
 
 fig.supxlabel('Energy (eV)')
 fig.supylabel('Density (eV$^{-1}$)')
