@@ -1,7 +1,7 @@
 import numpy as np
 import os
 import matplotlib.pyplot as plt
-import global_settings
+import global_settings as GS
 
 def plot_on_axes(fig, ax, inset_dims=[0.44, 0.65, 0.3, 0.25]):
     left, bottom, width, height = inset_dims
@@ -11,10 +11,10 @@ def plot_on_axes(fig, ax, inset_dims=[0.44, 0.65, 0.3, 0.25]):
     AU_2_EV = 27.211399
 
     plot_files = [
-        global_settings.data_root_dir + 'gs-ffmd/mm_qm1/vee_MD_spectral_density.dat',
-        global_settings.data_root_dir + 'gs-ffmd-MZ/mm_qm1/vee_MD_spectral_density.dat',
-        global_settings.data_root_dir + 'gs-aimd/mm_qm1/vee_MD_spectral_density.dat',
-        global_settings.data_root_dir + 'gs-aimd/qm2/vee_MD_spectral_density.dat',
+        os.path.join(GS.data_root_dir, 'gs-ffmd/mm_qm1/vee_MD_spectral_density.dat'),
+        os.path.join(GS.data_root_dir, 'gs-ffmd-MZ/mm_qm1/vee_MD_spectral_density.dat'),
+        os.path.join(GS.data_root_dir, 'gs-aimd/mm_qm1/vee_MD_spectral_density.dat'),
+        os.path.join(GS.data_root_dir, 'gs-aimd/qm2/vee_MD_spectral_density.dat'),
     ]
     labels = [
         'QUBEKit/Full MM',

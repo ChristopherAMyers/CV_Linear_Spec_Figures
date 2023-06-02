@@ -6,12 +6,12 @@ import global_settings as GS
 def plot_on_axes(ax):
 
     plot_files = [
-        GS.data_root_dir + '/gs-aimd/qm2/vee_MD_cumulant_spectrum.dat',
-        GS.data_root_dir + '/gs-aimd/mm_qm1/vee_MD_cumulant_spectrum.dat',
-        GS.data_root_dir + '/gs-aimd/mm_C4/vee_MD_cumulant_spectrum.dat',
-        GS.data_root_dir + '/gs-aimd/mm_star/vee_MD_cumulant_spectrum.dat',
-        GS.data_root_dir + '/gs-aimd/mm_4hb/vee_MD_cumulant_spectrum.dat',
-        GS.data_root_dir + '/gs-aimd/stripped/vee_MD_cumulant_spectrum.dat',
+        os.path.join(GS.data_root_dir, 'gs-aimd/qm2/vee_MD_cumulant_spectrum.dat'),
+        os.path.join(GS.data_root_dir, 'gs-aimd/mm_qm1/vee_MD_cumulant_spectrum.dat'),
+        os.path.join(GS.data_root_dir, 'gs-aimd/mm_C4/vee_MD_cumulant_spectrum.dat'),
+        os.path.join(GS.data_root_dir, 'gs-aimd/mm_star/vee_MD_cumulant_spectrum.dat'),
+        os.path.join(GS.data_root_dir, 'gs-aimd/mm_4hb/vee_MD_cumulant_spectrum.dat'),
+        os.path.join(GS.data_root_dir, 'gs-aimd/stripped/vee_MD_cumulant_spectrum.dat'),
     ]
     labels = [
         'QM+MM',
