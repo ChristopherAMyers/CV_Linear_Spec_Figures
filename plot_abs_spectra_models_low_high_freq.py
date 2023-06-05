@@ -56,8 +56,6 @@ def plot_on_axes(ax_grid):
         ax.plot(data[0], data[1], label=label, color=color)
         i += 1
 
-        if plot_num == 0:
-            ax.legend(loc='upper right', fontsize=plt.rcParams['axes.labelsize']*0.9)
         if plot_num == 1:
             ax.set_xlabel('Energy (eV)')
         ax.set_ylabel('Intensity (arb. units)')
@@ -67,15 +65,15 @@ def plot_on_axes(ax_grid):
         # ax.set_xticks([1.5, 1.7, 1.9, 2.1, 2.3, 2.5])
         ax.set_xticks([1.9, 2.1, 2.3, 2.5])
 
-        if plot_num == 0:
-            ax.text(0.65, 0.15, 'High Frequency', fontsize=22, transform=ax.transAxes)
-        else:
-            ax.text(0.65, 0.15, 'Low Frequency', fontsize=22, transform=ax.transAxes)
+            
 
 if __name__ == "__main__":
 
     fig, ax_grid = plt.subplots(2, 1, figsize=(7.0,8.0))
     plot_on_axes(ax_grid)
+    ax_grid[0].legend(loc='upper right', fontsize=plt.rcParams['axes.labelsize']*0.9)
     fig.tight_layout()
+    ax_grid[0].text(0.65, 0.15, 'High Frequency', fontsize=22, transform=ax_grid[0].transAxes)
+    ax_grid[1].text(0.65, 0.15, 'Low Frequency', fontsize=22, transform=ax_grid[1].transAxes)
     fig.savefig('png/abs_spectra_models_low_high.png', dpi=500)
     plt.show()

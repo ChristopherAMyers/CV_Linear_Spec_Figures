@@ -5,7 +5,7 @@ plt.style.use('../style.mplstyle')
 def plot_on_axes(ax, plot_legent=False):
     data = np.loadtxt('moh_acceptor_data.txt').T
     # titles = ['MM/MM-QUBEKit', 'MM/MM-QUBEKit(MK)', 'QM/MM (Solvated)', 'CAM-B3LYP/6-31G*']
-    titles = ['QUBEKit/QM1', 'QUBEKit(MK)/QM1', 'AIMD/QM1', 'AIMD/QM2']
+    titles = ['QUBEKit/MM', 'revQUBEKit/MM', 'AIMD/MM', 'AIMD/MM+QM']
     colors = ['#BA6023', '#4D943C', '#E03223', '#0101F5']
 
     for i, y in enumerate(data[1:]):

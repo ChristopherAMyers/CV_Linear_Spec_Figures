@@ -15,7 +15,7 @@ rcParams = {
 }
 plt.rcParams.update(rcParams)
 
-fig, (ax1, ax2) = plt.subplots(2, figsize=(6, 8))
+fig, (ax1, ax2) = plt.subplots(2, figsize=(5.5, 8), sharex=True)
 
 # left, bottom, width, height
 plot_moh_acc.plot_on_axes(ax1)
@@ -32,7 +32,7 @@ im_donor = plt.imread('pymol_donor.png')
 im_acceptor= plt.imread('pymol_acceptor.png')
 
 #   x, y, width, height
-newax1 = fig.add_axes([0.122, 0.088 ,0.2,0.2], anchor='NE', zorder=1)
+newax1 = fig.add_axes([0.152, 0.088 ,0.2,0.2], anchor='NE', zorder=1)
 newax1.imshow(im_donor)
 newax1.axis('off')
 newax2 = fig.add_axes([0.724, 0.8 ,0.25,0.2], anchor='NE', zorder=1)

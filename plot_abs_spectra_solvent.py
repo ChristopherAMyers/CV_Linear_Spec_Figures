@@ -1,24 +1,24 @@
 import numpy as np
-import os
+from os.path import join
 import matplotlib.pyplot as plt
 import global_settings as GS
 
 def plot_on_axes(ax):
 
     plot_files = [
-        os.path.join(GS.data_root_dir, 'gs-aimd/qm2/vee_MD_cumulant_spectrum.dat'),
-        os.path.join(GS.data_root_dir, 'gs-aimd/mm_qm1/vee_MD_cumulant_spectrum.dat'),
-        os.path.join(GS.data_root_dir, 'gs-aimd/mm_C4/vee_MD_cumulant_spectrum.dat'),
-        os.path.join(GS.data_root_dir, 'gs-aimd/mm_star/vee_MD_cumulant_spectrum.dat'),
-        os.path.join(GS.data_root_dir, 'gs-aimd/mm_4hb/vee_MD_cumulant_spectrum.dat'),
-        os.path.join(GS.data_root_dir, 'gs-aimd/stripped/vee_MD_cumulant_spectrum.dat'),
+        join(GS.data_root_dir, 'gs-aimd/qm2/vee_MD_cumulant_spectrum.dat'),
+        join(GS.data_root_dir, 'gs-aimd/mm_qm1/vee_MD_cumulant_spectrum.dat'),
+        join(GS.data_root_dir, 'gs-aimd/mm_C4/vee_MD_cumulant_spectrum.dat'),
+        join(GS.data_root_dir, 'gs-aimd/mm_star/vee_MD_cumulant_spectrum.dat'),
+        join(GS.data_root_dir, 'gs-aimd/mm_4hb/vee_MD_cumulant_spectrum.dat'),
+        join(GS.data_root_dir, 'gs-aimd/stripped/vee_MD_cumulant_spectrum.dat'),
     ]
     labels = [
         'QM+MM',
         'Full MM',
-        'Pi Solvent',
-        'Star Methanol',
-        'HB Aceptors',
+        '1 Axial HB',
+        '4 Axial Solvent',
+        '4 Peripheral HB',
         'Stripped'
     ]
     colors = ['blue', 'red', '#D321FF', 'orange', '#21ADEF', 'black']

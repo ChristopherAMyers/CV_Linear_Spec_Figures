@@ -19,7 +19,7 @@ plot_files = [
 ]
 labels = [
     'QUBEKit/MM',
-    'QUBEKit(MK)/MM',
+    'revQUBEKit/MM',
     'AIMD/MM',
     'AIMD/QM+MM',
 ]

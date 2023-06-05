@@ -2,6 +2,7 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 import global_settings as GS
+from scipy.integrate import simpson
 
 def plot_on_axes(fig, ax, inset_dims=[0.44, 0.65, 0.3, 0.25]):
     left, bottom, width, height = inset_dims
@@ -18,7 +19,7 @@ def plot_on_axes(fig, ax, inset_dims=[0.44, 0.65, 0.3, 0.25]):
     ]
     labels = [
         'QUBEKit/Full MM',
-        'QUBEKit(MK)/Full MM',
+        'revQUBEKit/Full MM',
         'AIMD/Full MM',
         'AIMD/QM+MM',
     ]
@@ -28,12 +29,17 @@ def plot_on_axes(fig, ax, inset_dims=[0.44, 0.65, 0.3, 0.25]):
     # max_loc = exp_data[0][np.argmax(exp_data[1])]
     for file, label, color in zip(plot_files, labels, colors):
         data = np.loadtxt(file).T
-        print(data.shape)
         data[0] *= AU_2_CM
         data[1] *= AU_2_EV
 
         ax.plot(data[0], data[1], label=label, color=color)
         ax2.plot(data[0], data[1], label=label, color=color)
+
+        #   compute reorganization energy and Stokes shift
+        integrand = np.zeros_like(data[0])
+        integrand[1:] = data[1, 1:]/data[0, 1:]
+        reorg_engy = simpson(integrand, data[0])/np.pi
+        print('{:>20s}: {:10.5f}'.format(label, reorg_engy))
 
     # ax.legend(loc='upper right')
     ax.set_xlabel('Wavenumber (cm⁻¹)')

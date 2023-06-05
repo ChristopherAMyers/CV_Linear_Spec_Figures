@@ -1,7 +1,8 @@
 import numpy as np
-import os
+from os.path import join
 import matplotlib.pyplot as plt
-import global_settings
+import global_settings as GS
+from scipy.integrate import simpson
 
 def plot_on_axes(fig, ax, inset_dims=[0.52, 0.55, 0.4, 0.35]):
     left, bottom, width, height = inset_dims
@@ -12,31 +13,40 @@ def plot_on_axes(fig, ax, inset_dims=[0.52, 0.55, 0.4, 0.35]):
     AU_2_EV = 27.211399
 
     plot_files = [
-        '../gs-aimd/qm2/vee_MD_spectral_density.dat',
-        '../gs-aimd/mm_qm1/vee_MD_spectral_density.dat',
-        '../gs-aimd/mm_C4/vee_MD_spectral_density.dat',
-        '../gs-aimd/mm_4hb/vee_MD_spectral_density.dat',
-        '../gs-aimd/stripped/vee_MD_spectral_density.dat'
+        join(GS.data_root_dir, 'gs-aimd/qm2/vee_MD_spectral_density.dat'),
+        join(GS.data_root_dir, 'gs-aimd/mm_qm1/vee_MD_spectral_density.dat'),
+        join(GS.data_root_dir, 'gs-aimd/mm_C4/vee_MD_spectral_density.dat'),
+        join(GS.data_root_dir, 'gs-aimd/mm_star/vee_MD_spectral_density.dat'),
+        join(GS.data_root_dir, 'gs-aimd/mm_4hb/vee_MD_spectral_density.dat'),
+        join(GS.data_root_dir, 'gs-aimd/stripped/vee_MD_spectral_density.dat'),
     ]
     labels = [
         'QM+MM',
         'Full MM',
-        'Pi Solvent',
-        'HB Aceptors',
+        '1 Axial HB',
+        '4 Axial Solvent',
+        '4 Peripheral HB',
         'Stripped'
     ]
-    colors = ['blue', 'red', '#D321FF', '#21ADEF', 'black']
+    colors = ['blue', 'red', '#D321FF', 'orange', '#21ADEF', 'black']
 
     # max_loc = exp_data[0][np.argmax(exp_data[1])]
     for file, label, color in zip(plot_files, labels, colors):
         data = np.loadtxt(file).T
-        print(data.shape)
         data[0] *= AU_2_CM
         data[1] *= AU_2_EV
 
         ax.plot(data[0], data[1], label=label, color=color)
         ax2.plot(data[0], data[1], label=label, color=color)
 
+        #   compute reorganization energy and Stokes shift
+        # integrand = np.zeros_like(data[0])
+        # integrand[1:] = data[1, 1:]/data[0, 1:]
+        # ax.plot(integrand)
+        # reorg_engy = simpson(integrand, data[0])/np.pi
+        # print('{:>20s}: {:10.5f}'.format(label, reorg_engy))
+
+    # plt.show()
     # ax.legend(loc='upper right')
     ax.set_xlabel('Wavenumber (cm⁻¹)')
     ax.set_ylabel('$J(\omega)$ (eV)')

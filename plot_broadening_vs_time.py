@@ -4,9 +4,19 @@ import matplotlib.patheffects as PathEffects
 from scipy.interpolate import interp1d
 from scipy.optimize import root
 import os
-import global_settings
+import global_settings as GS
 
+spectra_files = (
+    os.path.join(GS.data_root_dir, 'time_resolved/gs-aimd_lowFreq/stripped/spectra_data.npy'), 
+    os.path.join(GS.data_root_dir, 'time_resolved/gs-aimd_lowFreq/mm_4hb/spectra_data.npy'), 
+    os.path.join(GS.data_root_dir, 'time_resolved/gs-aimd_lowFreq/mm_C4/spectra_data.npy'), 
+    os.path.join(GS.data_root_dir, 'time_resolved/gs-aimd_lowFreq/mm_star/spectra_data.npy'), 
+    os.path.join(GS.data_root_dir, 'time_resolved/gs-aimd_lowFreq/mm_qm1/spectra_data.npy'), 
+    os.path.join(GS.data_root_dir, 'time_resolved/gs-aimd_lowFreq/qm2/spectra_data.npy'),
+    )
 
+titles = ('Stripped', '4 Peripheral HB', '4 Axial Solvent', '1 Axial Solvent', 'MM', 'QM+MM')
+colors = ['black', '#21ADEF', '#D321FF', 'orange', 'red', 'blue']
 def plot_on_axes(ax):
 
     #   global plot properties
@@ -24,15 +34,6 @@ def plot_on_axes(ax):
 
 
     time_between_steps = (100) #  in fempto seconds
-    spectra_files = (
-        global_settings.data_root_dir + 'time_resolved/gs-aimd_lowFreq/stripped/spectra_data.npy', 
-        global_settings.data_root_dir + 'time_resolved/gs-aimd_lowFreq/mm_4hb/spectra_data.npy', 
-        global_settings.data_root_dir + 'time_resolved/gs-aimd_lowFreq/mm_C4/spectra_data.npy', 
-        global_settings.data_root_dir + 'time_resolved/gs-aimd_lowFreq/mm_qm1/spectra_data.npy', 
-        global_settings.data_root_dir + 'time_resolved/gs-aimd_lowFreq/qm2/spectra_data.npy'
-        )
-    titles = ('Stripped', 'H-Bonds', 'Pi Solvent', 'QM-1', 'QM-2')
-    colors = ['black', '#21ADEF', '#D321FF', 'red', 'blue']
     
 
     for i, file in enumerate(spectra_files):
@@ -62,12 +63,13 @@ def plot_on_axes(ax):
     ax.set_yticks(np.arange(0, 0.17, 0.04))
     ax.set_ylabel('Energy (eV)')
     ax.set_xlabel('Time (ps)')
-    ax.legend(fontsize=fontsize, ncol=2)
+    
 
 if __name__ == "__main__":
     figsize = np.array((9, 5))
     fig, ax = plt.subplots(figsize=figsize, sharey=True)
     plot_on_axes(ax)
+    ax.legend(fontsize=fontsize, ncol=2)
     fig.tight_layout()
     fig.savefig('png/broadening_vs_time.png', dpi=500)
     plt.show()

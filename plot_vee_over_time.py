@@ -1,19 +1,20 @@
 import numpy as np
 import os
 import matplotlib.pyplot as plt
-import global_settings
+import global_settings as GS
+
+plot_files = [
+    os.path.join(GS.data_root_dir + 'gs-aimd/stripped/vee_traj1.dat'), 
+    os.path.join(GS.data_root_dir + 'gs-aimd/mm_4hb/vee_traj1.dat'), 
+    os.path.join(GS.data_root_dir + 'gs-aimd/mm_C4/vee_traj1.dat'), 
+    os.path.join(GS.data_root_dir + 'gs-aimd/mm_star/vee_traj1.dat'), 
+    os.path.join(GS.data_root_dir + 'gs-aimd/mm_qm1/vee_traj1.dat'), 
+    os.path.join(GS.data_root_dir + 'gs-aimd/qm2/vee_traj1.dat'),
+]
+titles = ('Stripped', '4 Peripheral HB', '4 Axial Solvent', '1 Axial Solvent', 'MM', 'QM+MM')
+colors = ['black', '#21ADEF', '#D321FF', 'orange', 'red', 'blue']
 
 def plot_on_axes(ax):
-    plot_files = [
-        global_settings.data_root_dir + 'gs-aimd/stripped/vee_traj1.dat', 
-        global_settings.data_root_dir + 'gs-aimd/mm_4hb/vee_traj1.dat', 
-        global_settings.data_root_dir + 'gs-aimd/mm_C4/vee_traj1.dat', 
-        global_settings.data_root_dir + 'gs-aimd/mm_qm1/vee_traj1.dat', 
-        global_settings.data_root_dir + 'gs-aimd/qm2/vee_traj1.dat'
-    ]
-    titles = ('Stripped', 'H-Bonds', 'Pi Solvent', 'QM-1', 'QM-2')
-    colors = ['black', '#21ADEF', '#D321FF', 'red', 'blue']
-
 
     for file, label, color in zip(plot_files, titles, colors):
         print("Processinf: ", file)

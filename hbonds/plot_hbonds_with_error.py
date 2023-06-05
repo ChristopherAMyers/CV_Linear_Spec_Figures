@@ -1,7 +1,7 @@
 import numpy as np
 import json
 import matplotlib.pyplot as plt
-plt.style.use('shao-yu')
+plt.style.use('../style.mplstyle')
 
 def smooth(data, N, func=np.mean):
     new_data = []
@@ -26,11 +26,11 @@ keys = list(data2.keys())
 for key in keys:
     data["MK_" + key] = data2[key]
 
-labels = {'Amine_as_an_Acceptor':       'Acceptor/AIMD', 
-          'Amine_as_a_Donor':           'Donor/AIMD', 
-          'Amine_as_an_Donor_(FF)':     'Donor/QUBEKit', 
-          'MK_Amine_as_an_Acceptor':    'Acceptor/revQUBEKit', 
-          'MK_Amine_as_a_Donor':        'Donor/revQUBEKit',
+labels = {'Amine_as_an_Acceptor':       'AIMD/Acceptor', 
+          'Amine_as_a_Donor':           'AIMD/Donor', 
+          'Amine_as_an_Donor_(FF)':     'QUBEKit/Donor', 
+          'MK_Amine_as_an_Acceptor':    'revQUBEKit/Acceptor', 
+          'MK_Amine_as_a_Donor':        'revQUBEKit/Donor',
           }
 #   time to start trajectory at, in picoseconds 
 start_times = [20, 20, 0, 0, 20]
