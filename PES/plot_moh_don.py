@@ -6,7 +6,7 @@ def plot_on_axes(ax, plot_legend=False):
     data = np.loadtxt('moh_donor_data.txt').T
     # titles = ['MM/MM-QUBEKit', 'MM/MM-QUBEKit(MK)', 'QM/MM (Solvated)', 'CAM-B3LYP/6-31G*']
     titles = ['QUBEKit/QM1', 'QUBEKit(MK)/QM1', 'AIMD/QM1', 'AIMD/QM2']
-    colors = ['#BA6023', '#4D943C', '#E03223', '#0101F5']
+    colors = ['#C99300', '#4D943C', '#E03223', '#0101F5']
 
     for i, y in enumerate(data[1:]):
         ax.plot(data[0], y/4.184, label=titles[i], color=colors[i])

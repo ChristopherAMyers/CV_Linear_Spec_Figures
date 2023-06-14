@@ -23,12 +23,12 @@ def plot_on_axes(fig, ax, inset_dims=[0.52, 0.55, 0.4, 0.35]):
     labels = [
         'QM+MM',
         'Full MM',
-        '1 Axial HB',
         '4 Axial Solvent',
+        '1 Axial HB',
         '4 Peripheral HB',
         'Stripped'
     ]
-    colors = ['blue', 'red', '#D321FF', 'orange', '#21ADEF', 'black']
+    colors = ['blue', 'red', 'orange', '#D321FF', '#21ADEF', 'black']
 
     # max_loc = exp_data[0][np.argmax(exp_data[1])]
     for file, label, color in zip(plot_files, labels, colors):

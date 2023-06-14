@@ -15,7 +15,7 @@ rcParams = {
 }
 plt.rcParams.update(rcParams)
 
-fig, (ax1, ax2) = plt.subplots(2, figsize=(5.5, 8), sharex=True)
+fig, (ax1, ax2) = plt.subplots(2, figsize=(5.5, 8), sharex=False)
 
 # left, bottom, width, height
 plot_moh_acc.plot_on_axes(ax1)
@@ -25,14 +25,12 @@ plot_moh_don.plot_on_axes(ax2)
 handles, labels = ax1.get_legend_handles_labels()
 fig.legend(handles, labels, loc='upper right', fontsize=fontsize, facecolor='white', framealpha=0.8, frameon=True, bbox_to_anchor=(0.2, 0.44, 0.5, 0.5), edgecolor='white')
 
-
-
 #   add image to plot
 im_donor = plt.imread('pymol_donor.png')
 im_acceptor= plt.imread('pymol_acceptor.png')
 
 #   x, y, width, height
-newax1 = fig.add_axes([0.152, 0.088 ,0.2,0.2], anchor='NE', zorder=1)
+newax1 = fig.add_axes([0.152, 0.086 ,0.2,0.2], anchor='NE', zorder=1)
 newax1.imshow(im_donor)
 newax1.axis('off')
 newax2 = fig.add_axes([0.724, 0.8 ,0.25,0.2], anchor='NE', zorder=1)

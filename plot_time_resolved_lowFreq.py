@@ -21,18 +21,19 @@ rcParams = {
 time_step = 4
 time_between_steps = (100) #  in fempto seconds
 spectra_files = (
-        join(GS.data_root_dir, 'time_resolved/gs-aimd_lowFreq/stripped/spectra_data.npy'), 
+        # join(GS.data_root_dir, 'time_resolved/gs-aimd_lowFreq/stripped/spectra_data.npy'), 
         join(GS.data_root_dir, 'time_resolved/gs-aimd_lowFreq/mm_star/spectra_data.npy'), 
         join(GS.data_root_dir, 'time_resolved/gs-aimd_lowFreq/mm_C4/spectra_data.npy'), 
         join(GS.data_root_dir, 'time_resolved/gs-aimd_lowFreq/mm_qm1/spectra_data.npy'), 
-        join(GS.data_root_dir, 'time_resolved/gs-aimd_lowFreq/qm2/spectra_data.npy'),
+        # join(GS.data_root_dir, 'time_resolved/gs-aimd_lowFreq/qm2/spectra_data.npy'),
     )
 # spectra_files = spectra_files[0:2]
-titles = ('Stripped', 
-          '1 Axial HB', 
-          '4 Axial Solvent', 
-          'Full MM', 
-          'QM+MM',
+titles = (
+        # 'Stripped', 
+        '1 Axial HB', 
+        '4 Axial Solvent', 
+        'Full MM', 
+        # 'QM+MM',
         )
 
 def plot_on_axes(ax_grid, actually_plot=True):
@@ -94,10 +95,10 @@ if __name__ == "__main__":
     length = 1.5*len(spectra_files) + 0.5
     figsize = np.array((length, 2.9))*1.2
     fig, ax_grid = plt.subplots(1, len(spectra_files), figsize=figsize, sharey=True)
-    plot_on_axes(ax_grid, actually_plot=False)
+    plot_on_axes(ax_grid, actually_plot=True)
     fig.supxlabel('Energy (eV)')
     fig.tight_layout()
-    fig.subplots_adjust(left=0.084, bottom=0.205, right=0.987, top=0.917, wspace=0.06, hspace=0.2)
+    fig.subplots_adjust(left=0.114, bottom=0.205, right=0.987, top=0.917, wspace=0.06, hspace=0.2)
 
     plt.subplots_adjust(wspace=0.08)    #   space between subplots
     fig.savefig('png/time_resolved_lowFreq.png', dpi=500)

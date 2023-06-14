@@ -27,8 +27,8 @@ def run():
         join(GS.data_root_dir, 'gs-aimd/mm_4hb_low_freq/vee_MD_spectral_density.dat'),
         join(GS.data_root_dir, 'gs-aimd/mm_star_low_freq/vee_MD_spectral_density.dat'),
         join(GS.data_root_dir, 'gs-aimd/mm_C4_low_freq/vee_MD_spectral_density.dat'),
-        # join(GS.data_root_dir, 'gs-aimd/mm_qm1_low_freq/vee_MD_spectral_density.dat'),
-        # join(GS.data_root_dir, 'gs-aimd/qm2_low_freq/vee_MD_spectral_density.dat'),
+        join(GS.data_root_dir, 'gs-aimd/mm_qm1_low_freq/vee_MD_spectral_density.dat'),
+        join(GS.data_root_dir, 'gs-aimd/qm2_low_freq/vee_MD_spectral_density.dat'),
     ]
     labels = [
         'QUBEKit',
@@ -48,6 +48,8 @@ def run():
         data[0] *= 1
         data[1] *= 1
 
+        print("FILE: ", file.replace('/vee_MD_spectral_density.dat', ''))
+
         J_interp = interp1d(data[0], data[1], kind='cubic')
         # ax.scatter(data[0], data[1], marker='.')
         new_x = np.linspace(0, data[0].max()/1000, 10000)
@@ -57,18 +59,21 @@ def run():
 
 
         #   compute reorganization energy and Stokes shift
-        # integrand = np.zeros_like(data[0])
-        integrand = data[1, 1:]/data[0, 1:]
+        integrand = np.zeros_like(data[0])
+        integrand[1:] = data[1, 1:]/data[0, 1:]
+        integrand[0] = integrand[1]
         # integrand = data[1, 1:]
         # if label == 'QUBEKit' == 0:
         #     integrand *= 2
-        ax.plot(data[0, 1:]*AU_2_CM, integrand, label=label)
-        reorg_engy = simpson(integrand, data[0, 1:])/np.pi
-        print('{:>20s}: {:10.5f}'.format(label, reorg_engy*2*AU_2_EV))
+
+        ax.plot(data[0]*AU_2_CM, integrand, label=label)
+        reorg_engy = simpson(integrand, data[0])/np.pi
+        print('{:>20s}: {:10.5f}'.format(label, reorg_engy*AU_2_EV))
 
     ax.plot((0, new_x.max()), (0, new_x.max()), color='k')
     ax.legend()
-    ax.set_xlim(0, 300)
+    # ax.set_xlim(0, 300)
+    ax.set_ylim(0)
     plt.show()
 
 

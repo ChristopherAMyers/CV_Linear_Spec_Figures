@@ -21,10 +21,10 @@ def plot_on_axes(ax: plt.Axes) -> list:
 
     plots = []
 
-    exp_data = np.loadtxt('experimental_abs.txt').T
+    exp_data = np.loadtxt('../experimental_abs.txt').T
     # ax.plot(exp_data[0], exp_data[1], color='grey', linestyle=(0, (1, 1)), label='Experiment')
-    fill = ax.fill_between(exp_data[0], 0, exp_data[1], color='#BFC1C1', linestyle=(0, (1, 1)), label='Experiment')
-    plots.append(fill)
+    # fill = ax.fill_between(exp_data[0], 0, exp_data[1], color='#BFC1C1', linestyle=(0, (1, 1)), label='Experiment')
+    # plots.append(fill)
 
     max_loc = exp_data[0][np.argmax(exp_data[1])]
     for file, label, color in zip(plot_files, labels, colors):
@@ -35,7 +35,8 @@ def plot_on_axes(ax: plt.Axes) -> list:
             max_loc = data[0][data[1].argmax()]
         else:
             this_max = data[0][data[1].argmax()]
-            data[0] -= (this_max - max_loc)
+            energy_shift = (this_max - max_loc)
+            print('{:20s}: {:.5f}'.format(label, energy_shift))
 
         line = ax.plot(data[0], data[1], label=label, color=color)
         plots.append(line[0])
@@ -44,15 +45,15 @@ def plot_on_axes(ax: plt.Axes) -> list:
     ax.set_xlabel('Energy (eV)')
     ax.set_ylabel('Intensity (arb. units)')
     ax.set_ylim(-0.005, 1.05)
-    ax.set_xlim(1.9, 2.5)
+    ax.set_xlim(2.6, 3.5)
     ax.set_yticks([])
     # ax.set_xticks([1.5, 1.7, 1.9, 2.1, 2.3, 2.5])
-    ax.set_xticks([1.9, 2.1, 2.3, 2.5])
+    # ax.set_xticks([1.9, 2.1, 2.3, 2.5])
 
     return plots
 
 if __name__ == "__main__":
-    fig, ax = plt.subplots(figsize=(8.0,4.5))
+    fig, ax = plt.subplots(figsize=(6.0,4.5))
     plot_on_axes(ax)
     ax.legend(loc='upper right', fontsize=plt.rcParams['axes.labelsize']*0.9)
     fig.tight_layout()

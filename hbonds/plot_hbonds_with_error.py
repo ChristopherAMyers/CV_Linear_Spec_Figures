@@ -26,12 +26,15 @@ keys = list(data2.keys())
 for key in keys:
     data["MK_" + key] = data2[key]
 
-labels = {'Amine_as_an_Acceptor':       'AIMD/Acceptor', 
-          'Amine_as_a_Donor':           'AIMD/Donor', 
-          'Amine_as_an_Donor_(FF)':     'QUBEKit/Donor', 
-          'MK_Amine_as_an_Acceptor':    'revQUBEKit/Acceptor', 
-          'MK_Amine_as_a_Donor':        'revQUBEKit/Donor',
+labels = {'Amine_as_an_Acceptor':       'AIMD/Peripheral', 
+          'Amine_as_a_Donor':           'AIMD/Axial', 
+          'Amine_as_an_Donor_(FF)':     'QUBEKit/Axial', 
+          'MK_Amine_as_an_Acceptor':    'revQUBEKit/Peripheral', 
+          'MK_Amine_as_a_Donor':        'revQUBEKit/Axial',
           }
+colors = ['#E03223', '#E03223', '#4D943C', '#4D943C', '#C99300']
+linestyles = [ 'dotted', '-', 'dotted', '-', '-']
+
 #   time to start trajectory at, in picoseconds 
 start_times = [20, 20, 0, 0, 20]
 saved_data = {}
@@ -58,8 +61,8 @@ for i, key in enumerate(('Amine_as_an_Acceptor', 'Amine_as_a_Donor', 'MK_Amine_a
         avg_dist[0:10000] = np.nan
         std_dist[0:10000] = np.nan
 
-    avg_plt, = ax1.plot(time, avg_dist, label=label)
-    std_plt, = ax2.plot(time, std_dist, label=label)
+    avg_plt, = ax1.plot(time, avg_dist, label=label, color=colors[i], linestyle=linestyles[i])
+    std_plt, = ax2.plot(time, std_dist, label=label, color=colors[i], linestyle=linestyles[i])
 
     #   this was before we realized that the data had a bunch of NaN's
     # if key == 'MK_Amine_as_an_Acceptor':

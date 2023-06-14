@@ -10,14 +10,16 @@ def plot_on_axes(ax: plt.Axes) -> list:
         os.path.join(GS.data_root_dir, 'gs-ffmd-MZ/mm_qm1/vee_MD_cumulant_spectrum.dat'),
         os.path.join(GS.data_root_dir, 'gs-aimd/mm_qm1/vee_MD_cumulant_spectrum.dat'),
         os.path.join(GS.data_root_dir, 'gs-aimd/qm2/vee_MD_cumulant_spectrum.dat'),
+        # 'other/abs_spectra_from_combined.dat'
     ]
     labels = [
         'QUBEKit/MM',
         'revQUBEKit/MM',
         'AIMD/MM',
         'AIMD/QM+MM',
+        'Combined'
     ]
-    colors = ['#C99300', '#259225', 'red', 'Blue']
+    colors = ['#C99300', '#259225', 'red', 'Blue', 'black']
 
     plots = []
 
@@ -54,7 +56,7 @@ def plot_on_axes(ax: plt.Axes) -> list:
 if __name__ == "__main__":
     fig, ax = plt.subplots(figsize=(8.0,4.5))
     plot_on_axes(ax)
-    ax.legend(loc='upper right', fontsize=plt.rcParams['axes.labelsize']*0.9)
+    ax.legend(loc='upper right', fontsize=plt.rcParams['axes.labelsize']*1.2)
     fig.tight_layout()
     fig.savefig('png/abs_spectra_models.png', dpi=500)
     plt.show()
